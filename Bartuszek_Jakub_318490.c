@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void open_file(char path[255])
+void check_file(char path[255])
 {
 	FILE * file = fopen(path,"r");
 	if(file)
@@ -38,11 +38,12 @@ void main()
 {
 	char searched_phrase[255] = "";
 	char path_to_file[255] = "";
+
 	printf("Insert path to your file:\n");
 	scanf("%s",path_to_file);
 	printf("Insert searched phrase:\n");
 	scanf("%s",searched_phrase);
 
-	open_file(path_to_file);
+	check_file(path_to_file);
 	look_for_phrase(path_to_file, searched_phrase);
 }
