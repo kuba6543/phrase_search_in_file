@@ -4,6 +4,10 @@
 
 Programme will search for a phrase in file and display number of occurences.
 
+## Launching parameters:
+
+./<filename> <searched_phrase> <path_to_file>
+
 ## Variables in programme:
 
 * searched_phrase(string) - searched phrase
