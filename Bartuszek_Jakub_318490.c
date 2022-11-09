@@ -24,7 +24,7 @@ void look_for_phrase(char path[255],char phrase[255])
 	FILE * file = fopen(path,"r");
     while(fscanf(file, "%s", &temp)!=EOF)
     {
-		if(!stricmp(phrase, temp))
+		if(!strcmp(phrase, temp))
 		{
 			printf("Phrase \"%s\" found!\n",phrase);
 			quantity++;
@@ -34,15 +34,19 @@ void look_for_phrase(char path[255],char phrase[255])
     printf("Number of phrases \"%s\" in file: %d\n", phrase, quantity);
 	
 }
-void main()
+void main(int argc, char *argv[])
 {
 	char searched_phrase[255] = "";
 	char path_to_file[255] = "";
 
-	printf("Insert path to your file:\n");
-	scanf("%s",path_to_file);
-	printf("Insert searched phrase:\n");
-	scanf("%s",searched_phrase);
+	if (argc!=3)
+	{
+		printf("Wrong input, use ./<filename> <searched_phrase> <path_to_file>");
+		exit(-1);
+	}
+
+    strcpy(searched_phrase, argv[1]);
+    strcpy(path_to_file, argv[2]);
 
 	check_file(path_to_file);
 	look_for_phrase(path_to_file, searched_phrase);
