@@ -2,9 +2,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-void look_for_phrase(char path[255],char phrase[255])
+#define BUFFER_SIZE 255
+
+void look_for_phrase(char path[BUFFER_SIZE],char phrase[BUFFER_SIZE])
 {
-	char temp[255] = ""; 								// temporary function to store lines in file 
+	char temp[BUFFER_SIZE] = ""; 								// temporary function to store lines in file 
 	int quantity = 0;									// quantity of occurences
 
 	FILE * file = fopen(path,"r"); 						// opening file from path
@@ -31,8 +33,8 @@ void look_for_phrase(char path[255],char phrase[255])
 }
 void main(int argc, char *argv[])
 {
-	char searched_phrase[255] = "";
-	char path_to_file[255] = "";
+	char searched_phrase[BUFFER_SIZE] = "";
+	char path_to_file[BUFFER_SIZE] = "";
 
 	if (argc!=3)																// 2 arguments expected +  program = 3
 	{
@@ -40,8 +42,8 @@ void main(int argc, char *argv[])
 		exit(-1);
 	}
 
-    strcpy(searched_phrase, argv[1]);											// strings can't be simply copied, I am using strcpy()
-    strcpy(path_to_file, argv[2]);
+    strncpy(searched_phrase, argv[1], BUFFER_SIZE);											// strings can't be simply copied, I am using strcpy()
+    strncpy(path_to_file, argv[2], BUFFER_SIZE);
 
 	look_for_phrase(path_to_file, searched_phrase);
 }
